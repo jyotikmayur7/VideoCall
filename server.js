@@ -5,6 +5,18 @@ const server = http.createServer();
 const socket = require('socket.io');
 const io = socket(server);
 
+users = {};
+
+io.on('connection', socket => {
+
+    // Sending client the socket id and receiving username and also maintaining the user's list
+    socket.emit("yourID", socket.id);
+    socket.on("username", (username) => {
+        if (!user[socket.id]) {
+            users[socket.id] = username;
+        }
+    })
+})
 
 
 server.listen(8000, () => {
