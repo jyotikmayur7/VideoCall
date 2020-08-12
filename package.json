@@ -4,12 +4,15 @@
   "description": "Video call web app using WebRTC",
   "main": "index.js",
   "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jyotik Mayur",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "nodemon": "^2.0.4",
     "socket.io": "^2.3.0"
   }
 }
