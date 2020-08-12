@@ -18,14 +18,21 @@ io.on('connection', socket => {
     })
 
     // Sending the data of all the users
-    socket.emit("usersData", users);
+    io.sockets.emit("usersData", users);
 
     // On call disconnect
     socket.on("disconnect", () => {
         delete users[socket.id];
     })
 
-    // Establishing WebRTC handshake between users
+    // Establishing WebRTC handshake between 2 users
+    socket.on("callUser", (data) => {
+        io.to(data.userToCall).emit("hey", { signal: data.signalData, from: data.from });
+    })
+
+    socket.on("acceptCall", (data) => {
+        io.to(data.to).emit("callAccepted", data.signal);
+    })
 
 })
 
