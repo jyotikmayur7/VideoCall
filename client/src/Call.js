@@ -13,7 +13,7 @@ function Call() {
 
     const userVideo = useRef();
     const partnerVideo = useRef();
-    const socket = useRef(); s
+    const socket = useRef();
 }
 
 export default Call;
