@@ -2,6 +2,24 @@ import React, { useEffect, useState, useRef } from 'react';
 import io from 'socket.io-client';
 import Peer from 'simple-peer';
 
+const Container = styled.div`
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Row = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Video = styled.video`
+  border: 1px solid blue;
+  width: 50%;
+  height: 50%;
+`;
+
 function Call() {
     const [yourID, setYourID] = useState("");
     const [username, setUsername] = useState("User");
@@ -42,6 +60,31 @@ function Call() {
         })
 
     }, [])
+
+
+
+
+    return (
+        <Container>
+            <Row>
+                {UserVideo}
+                {PartnerVideo}
+            </Row>
+            <Row>
+                {Object.keys(users).map(key => {
+                    if (key === yourID) {
+                        return null;
+                    }
+                    return (
+                        <button onClick={() => callPeer(key)}>Call {users[key]}</button>
+                    )
+                })}
+            </Row>
+            <Row>
+                {incomingCall}
+            </Row>
+        </Container>
+    )
 }
 
 export default Call;
