@@ -76,6 +76,15 @@ function Call() {
         )
     }
 
+    let incomingCall;
+    if (receivingCall) {
+        incomingCall = (
+            <div>
+                <h1>{caller} is calling you</h1>
+                <button onClick={acceptCall}>Accept</button>
+            </div>
+        )
+    }
 
     return (
         <Container>
