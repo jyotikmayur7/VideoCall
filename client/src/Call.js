@@ -62,6 +62,19 @@ function Call() {
     }, [])
 
 
+    let UserVideo;
+    if (stream) {
+        UserVideo = (
+            <Video playsInline muted ref={userVideo} autoPlay />
+        )
+    }
+
+    let PartnerVideo;
+    if (callAccepted) {
+        PartnerVideo = (
+            <Video playsInline ref={partnerVideo} autoPlay />
+        )
+    }
 
 
     return (
